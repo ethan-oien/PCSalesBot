@@ -1,5 +1,4 @@
 const { Client, IntentsBitField } = require('discord.js')
-const internal = require('stream')
 
 const client = new Client({
   intents: [
@@ -9,3 +8,5 @@ const client = new Client({
     IntentsBitField.Flags.MessageContent,
   ],
 })
+
+client.login(process.env.DISCORD_TOKEN)
