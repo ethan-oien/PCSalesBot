@@ -1,0 +1,23 @@
+{
+  "name": "pcsalesbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ethan-oien/PCSalesBot.git"
+  },
+  "author": "Ethan Oien & Gabriel Rosengren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ethan-oien/PCSalesBot/issues"
+  },
+  "homepage": "https://github.com/ethan-oien/PCSalesBot#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
