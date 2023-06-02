@@ -1,6 +1,6 @@
 require('dotenv').config()
 const express = require('express');
-const { getAccessToken } = require("./reddit/auth")
+const { getAccessToken } = require('./reddit/auth')
 
 const app = express();
 
