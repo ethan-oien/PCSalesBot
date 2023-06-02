@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const { getAccessToken } = require('./reddit/auth')
+const { getSubredditHotPosts } = require('./reddit/api')
 
 const app = express();
 
@@ -11,5 +12,9 @@ app.listen(port, async () => {
 
     const token = await getAccessToken();
 
-    console.log(token);
+    const data = await getSubredditHotPosts(token, 'buildapcsales');
+
+    data.forEach((c) => {
+        console.log(c);
+    });
 });
