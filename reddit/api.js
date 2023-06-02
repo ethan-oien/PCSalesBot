@@ -22,11 +22,17 @@ async function get(access_token, uri)
 
 async function getSubredditHotPosts(access_token, subreddit)
 {
-    const uri = `/r/${subreddit}/hot`;
-    
-    const res = await get(access_token, uri);
+    const doWork = async (uri, queryString='') => {
+        const res = await get(access_token, uri + queryString);
 
-    return res.data.data.children;
+        const fullname = res.data.data.after;
+        const next = async () => doWork(uri, `?after=${fullname}`);
+    
+        return [ res.data.data.children, next ];
+    }
+
+    const uri = `/r/${subreddit}/hot`;
+    return doWork(uri);
 }
 
 module.exports = {
