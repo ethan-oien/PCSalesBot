@@ -2,27 +2,25 @@ const axios = require('axios').default;
 
 async function getAccessToken()
 {
-    return new Promise((resolve, reject) => { 
-        const url = 'https://www.reddit.com/api/v1/access_token';
+    const url = 'https://www.reddit.com/api/v1/access_token';
 
-        const data = {
-            grant_type: 'client_credentials'
-        }
+    const data = {
+        grant_type: 'client_credentials'
+    }
 
-        const headers = {
-            'Authorization': 'Basic ' + Buffer.from(`${process.env.REDDIT_CLIENT_ID}:${process.env.REDDIT_SECRET}`).toString('base64'),
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+    const headers = {
+        'Authorization': 'Basic ' + Buffer.from(`${process.env.REDDIT_CLIENT_ID}:${process.env.REDDIT_SECRET}`).toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+    }
 
-        axios.post(url, data, {
-            headers: headers
-        })
-        .then((res) => {
-            resolve(res.data.access_token);
-        })
-        .catch((err) => {
-            reject(err);
-        });
+    return axios.post(url, data, {
+        headers: headers
+    })
+    .then((res) => {
+        return res.data.access_token;
+    })
+    .catch((err) => {
+        throw err;
     });
 }
 
